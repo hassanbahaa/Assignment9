@@ -9,6 +9,14 @@ export class DBRepository {
   async update(filter, update, options = {}) {
     return await this.sModel.findOneAndUpdate(filter, update, options);
   }
+
+  async updateAll(filter, update, options = {}) {
+    return await this.sModel.updateMany(filter, update, options);
+  }
+
+  async replace(filter, update, options = { runValidators: true }) {
+    return await this.sModel.findOneAndReplace(filter, update, options);
+  }
   async getOne(filter, projection = {}, options = {}) {
     return await this.sModel.findOne(filter, projection, options);
   }
